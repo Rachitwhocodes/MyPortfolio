@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rachit Singh - Portfolio</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+  <style>
+    /* scroll animation */
+    .fade-in-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+    /* Minimal color scheme */
+    body {
+      background:#000000;
+      color: #ffffff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      scroll-behavior: smooth;
+      padding-top: 70px; /* to offset fixed navbar */
+    }
+
+    a, a:hover {
+      color: #0d6efd; /* Bootstrap primary blue */
+      text-decoration: none;
+    }
+
+    /* Navigation */
+    nav {
+      background-color: #000000;
+      box-shadow: 0 2px 6px rgb(0 0 0 / 0.1);
+    }
+    .navbar-brand, .nav-link {
+      color:#ffffff;
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+    .navbar-brand:hover, .nav-link:hover, .nav-link.active {
+      color: #0d6efd;
+    }
+
+    /* Header with photo */
+    header {
+      text-align: center;
+      padding-top: 3rem;
+      padding-bottom: 3rem;
+      background:#000000;
+      border-bottom: 1px solid #000000;
+    }
+
+    .portrait-container {
+      width: 170px;
+      height: 170px;
+      margin: 0 auto 1.5rem auto;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 5px solid #0d6efd;
+      box-shadow: 0 0 10px rgb(13 110 253 / 0.3);
+      transition: box-shadow 0.3s ease;
+    }
+    .portrait-container:hover {
+      box-shadow: 0 0 20px rgb(13 110 253 / 0.6);
+    }
+    .portrait-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+      border-radius: 50%;
+    }
+    .portrait-container:hover img {
+      transform: scale(1.05);
+    }
+
+    /* Section titles */
+    h2 {
+      font-weight: 700;
+      font-size: 2rem;
+      border-bottom: 2px solid #0d6efd;
+      padding-bottom: 0.3rem;
+      margin-bottom: 1rem;
+      letter-spacing: 1.2px;
+      animation: slideIn 1s forwards;
+      opacity: 0;
+    }
+    @keyframes slideIn {
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+      from {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+    }
+
+    /* Animate fadeInUp for sections */
+    section {
+      margin: 2rem 0;
+      padding-bottom: 2rem;
+      animation: fadeInUp 1.25s ease forwards;
+      opacity: 0;
+      transform: translateY(15px);
+    }
+    section:nth-of-type(1) { animation-delay: 0.2s; }
+    section:nth-of-type(2) { animation-delay: 0.5s; }
+    section:nth-of-type(3) { animation-delay: 0.8s; }
+    section:nth-of-type(4) { animation-delay: 1.1s; }
+
+    /* fadeInUp animation */
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      from {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+    }
+
+    ul.social-links {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      margin: 1rem 0 1rem 0;
+    }
+    ul.social-links li a {
+      font-size: 1.8rem;
+      color: #0d6efd;
+      transition: color 0.3s ease;
+    }
+    ul.social-links li a:hover {
+      color: #333;
+      transform: scale(1.15);
+    }
+
+    /* Project styling */
+    .project {
+      background:#000000;
+      border-radius: 12px;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .project:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 6px 14px rgb(0 0 0 / 0.15);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      background-color: #000000;
+      padding: 1rem 0;
+      font-size: 0.9rem;
+      color: #666;
+      border-top: 1px solid#000000;
+      letter-spacing: 0.5px;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-md navbar-light fixed-top">
+  <div class="container">
+    <a class="navbar-brand fade-in-up " href="#">Rachit Singh</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarsExample04"
+      aria-controls="navbarsExample04"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExample04">
+      <ul class="navbar-nav ms-auto mb-2 mb-md-0">
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+        <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<header class="fade-in-up">
+  <div class="portrait-container">
+    <img src="https://user-gen-media-assets.s3.amazonaws.com/gemini_images/900e6c8e-437b-4a82-b6d2-33382c110fb0.png" alt="Rachit Singh Portrait" />
+  </div>
+  <h1>Rachit Singh</h1>
+  <p style="font-size:1.2rem; font-weight:600; margin-top:-0.2rem;">
+     Software Developer | Java | REST API | Spring Boot
+  </p>
+
+  <ul class="social-links">
+    <li class="fade-in-up">
+      <a href="https://www.linkedin.com/in/rachit-singh-parihar28" target="_blank" aria-label="Linkedin">
+        <i class="fab fa-linkedin"></i>
+      </a>
+    </li>
+    <li class="fade-in-up">
+      <a href="https://github.com/Rachitwhocodes" target="_blank" aria-label="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+    <li class="fade-in-up">
+      <a href="https://leetcode.com/u/rachitsingh28/" target="_blank" aria-label="LeetCode">
+        <i class="fas fa-code"></i>
+      </a>
+    </li>
+    <li class="fade-in-up">
+      <a href="https://www.geeksforgeeks.org/user/rachitsinghhu1q/" target="_blank" aria-label="GeeksforGeeks">
+        <i class="fas fa-graduation-cap"></i>
+      </a>
+    </li>
+  </ul>
+</header>
+
+<main class="container">
+    <section id="education" class="fade-in-up" >
+  <h2>Education</h2>
+  <p><strong>Bachelor of Technology (B.Tech) in Computer Science Engineering</strong></p>
+  <p>AKS University, Satna (M.P), 2021-2025</p>
+</section>
+
+  <section id="about" class="fade-in-up">
+    <h2>About Me</h2>
+    <p>
+    I am a highly motivated Computer Science graduate with strong expertise in web and backend development, particularly in Java and Spring Boot. I have hands-on experience designing and implementing RESTful APIs, building scalable backend services, and working with relational and NoSQL databases like MySQL and MongoDB. Throughout my academic and project work, I have cultivated problem-solving skills and a deep appreciation for clean, maintainable code.
+    </p>
+    <p>
+I am passionate about continuous learning and improvement, always seeking to embrace new technologies and best practices such as Agile methodologies and test-driven development (TDD). My exposure to tools like Git, Maven, and Jenkins has strengthened my understanding of software development life cycles and CI/CD pipelines.
+    </p>
+  </section>
+
+  <section id="skills" class="fade-in-up">
+    <h2>Skills</h2>
+    <ul>
+      <li>Java, Spring Boot, REST APIs</li>
+      <li>HTML, CSS, Bootstrap, JavaScript</li>
+      <li>Git, GitHub, Maven</li>
+      <li>Databases: MySQL, MongoDB</li>
+    </ul>
+  </section>
+  
+
+  <section id="projects" class="fade-in-up">
+    <h2>Projects</h2>
+
+    <div class="project fade-in-up">
+      <a href="https://github.com/Rachitwhocodes/Expense_Tracker" target="_blank" rel="noopener noreferrer" style="color:inherit; text-decoration:none;">
+      <h4>Expense Tracker</h4> 
+    </a>
+      <p>
+       Built a responsive Expense Tracker web application using JavaScript, Node.js, and MongoDB. The app offers secure user authentication and allows users to add, edit, and delete expenses in real-time. It features a clean and intuitive UI for tracking daily expenses efficiently.
+       </p>
+<p>
+Key highlights include implementation of secure authentication flows, RESTful API endpoints for CRUD operations, and effective use of MongoDB’s flexible schema for storing user data. The project enhanced skills in full-stack web development, API design, and state management.
+      </p>
+    </div>
+
+   
+
+    <div class="project fade-in-up">
+     <a href="https://github.com/Rachitwhocodes/BankingProject" target="_blank" rel="noopener noreferrer" style="color:inherit; text-decoration:none;">
+      <h4>Banking Project (Java, Springboot)</h4>
+      <p>
+    Developed a robust backend banking application using Spring Boot, implementing RESTful APIs to manage accounts and transactions. The system handles account creation, viewing, and secure fund transfers with transaction history, leveraging Spring Data JPA and an in-memory H2 database for rapid testing. Key features include atomic transactions using @Transactional to ensure data consistency, comprehensive error handling, and modular layered architecture (Controller-Service-Repository).</p>
+<p>
+This project strengthened expertise in backend architecture, transaction management, and API design, showcasing proficiency in modern Java development and database integration.
+      </p>
+    </div>
+
+  </section>
+  <section id="Hobbies" class="fade-in-up" >
+    <h2>Hobbies</h2>
+    <ul>
+      <li>Solving puzzles and algorithm challenges on platforms like LeetCode or HackerRank.</li>
+      <li>Enjoying outdoor activities like running to maintain physical health.</li>
+      <li>Practicing mindfulness or meditation for mental well-being and focus.</li>
+    </ul>
+  </section>
+
+  <section id="contact" class="fade-in-up">
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:rachitsinghparihar28@gmail.com">rachitsinghparihar28@gmail.com</a></p>
+    <p>LinkedIn: <a href="https://www.linkedin.com/in/rachit-singh-parihar28" target="_blank">rachit-singh-parihar28</a></p>
+  </section>
+  
+</main>
+
+<footer>
+  <p>© 2025 Rachit Singh. All rights reserved.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  function revealOnScroll() {
+    const elements = document.querySelectorAll('.fade-in-up');
+    const windowHeight = window.innerHeight;
+    elements.forEach(el => {
+      const elementTop = el.getBoundingClientRect().top;
+      if (elementTop < windowHeight - 200) {
+        el.classList.add('visible');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', revealOnScroll);
+  window.addEventListener('load', revealOnScroll);
+</script>
+
+
+</body>
+</html>
